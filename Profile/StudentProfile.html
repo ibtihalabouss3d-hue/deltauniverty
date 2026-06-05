@@ -45,7 +45,6 @@
 
     <script src="../assets/js/PreventXSS.js"></script>
     <script src="../Scripts/Chat/jquery.signalR-2.4.1.min.js"></script>
-    <script src="../signalr/hubs" type="text/javascript"></script>
     <link href="../assets/css/croping/cropper.css" rel="stylesheet">
     <link href="../assets/css/croping/docs.css" rel="stylesheet">
 
@@ -1033,13 +1032,13 @@
                                             $("#stud-cgpa").text("Blocked");
                                             $("#stud-hours").text("Blocked");
                                             $("#r-hours").text("--");
-                                            $('.easypiechart').data('easyPieChart').update(0);
+                                            //$('.easypiechart').data('easyPieChart').update(0);
                                         } else {
                                             $("#stud-level").text(profile["Level"]);
                                             $("#stud-cgpa").text(profile["Genral_Grade"]);
                                             $("#stud-hours").text(profile["TP_Hours"]);
                                             $("#r-hours").text(parseInt(profile["RequiredHours"]) - parseInt(profile["TP_Hours"]));
-                                            $('.easypiechart').data('easyPieChart').update(Math.round(((parseInt(profile["TP_Hours"]) / parseInt(profile["RequiredHours"])) * 100)));
+                                            //$('.easypiechart').data('easyPieChart').update(Math.round(((parseInt(profile["TP_Hours"]) / parseInt(profile["RequiredHours"])) * 100)));
                                         }
                                         $("#stud-faculty").text(profile["Faculty"]);
                                         $("#stud-prog").html(profile["Program"]);
