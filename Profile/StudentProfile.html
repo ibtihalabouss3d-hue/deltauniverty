@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+
+
+<html lang="en" class="app" style="min-width:unset;">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Delta Univerity</title>
+    <link href="/assets/css/app.v2.css" rel="stylesheet" />
+
+    <link href="/assets/css/mdtimepicker.css" rel="stylesheet" />
+
+    <link href="/assets/js/fuelux/fuelux.css" rel="stylesheet" />
+
+    <link href="/assets/js/nestable/nestable.css" rel="stylesheet" />
+
+    <link href="/assets/js/datatables/datatables.css" rel="stylesheet" />
+
+    <link href="/assets/css/app.css" rel="stylesheet" />
+
+
+    <link href="/assets/css/jquery-ui.css" rel="stylesheet" />
+
+    <link href="/assets/js/intro/introjs.css" rel="stylesheet" />
+
+
+    <script src="/Scripts/Shared/jquery-1.10.2.min.js"></script>
+    <script src="/Scripts/moment.min.js"></script>
+    <script src="/assets/js/app.v2.js"></script>
+
+    <script src="/assets/js/jquery-ui.js"></script>
+
+    <script src="/assets/js/jquery.slim.js"></script>
+
+    <script src="/assets/js/app.js"></script>
+
+    <script src="/assets/js/charts/highcharts.js"></script>
+
+    <script src="/assets/js/charts/highcharts-3d.js"></script>
+
+    <script src="/assets/js/wysiwyg/ckeditor.js"></script>
+
+    <script src="/assets/js/wysiwyg/adapters/jquery.js"></script>
+
+    <script src="/assets/js/PreventXSS.js"></script>
+    <script src="/Scripts/Chat/jquery.signalR-2.4.1.min.js"></script>
+    <script src="/signalr/hubs" type="text/javascript"></script>
+    <link href="/assets/css/croping/cropper.css" rel="stylesheet">
+    <link href="/assets/css/croping/docs.css" rel="stylesheet">
+
+    <style>
+        html {
+            overflow-y: visible;
+        }
+
+        .no-Messages {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .navbar-brand {
+            font-size: 20px;
+            margin-top: -5px;
+            text-align: left;
+        }
+
+        .navbar-brand strong {
+            color: #f0a602
+        }
+
+        .navbar-brand div {
+            line-height: 29px;
+            font-size: 11px;
+            font-weight: normal;
+            margin-top: -23px;
+        }
+
+        .announcement-lock {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.50);
+            z-index: 999999;
+        }
+
+        .announcement-container {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 500px;
+            max-width: 500px;
+            height: 100%;
+            background-color: #ffffff;
+            border-left: 1px solid #9a9a9a;
+        }
+
+        .announcement-container .well {
+            box-shadow: none;
+            background-color: #edecec;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .announcement-container .bg-light {
+            background-color: #d3d3d3;
+        }
+
+        .announcement-container .title {
+            font-size: 18px;
+        }
+
+        .no-announcements {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .no-announcements i {
+            color: #d9d9d9;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-brand {
+                text-align: center;
+            }
+            .announcement-container {
+                width: 100%;
+                max-width: unset;
+                border-left: none;
+            }
+        }
+    </style>
+
+    <link href="/content/themes/Dark.css" rel="stylesheet" />
+
+</head>
+
+<body style="min-width:unset; overflow:auto;">
+    <div class="announcement-lock hide">
+
+    </div>
+    <div class="noti-area">
+    </div>
+    <div class="results-area">
+    </div>
+    <section class="vbox">
+        <header class="bg-dark dk header navbar navbar-fixed-top-xs">
+            <div class="navbar-header aside-md">
+                <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav"><i class="fa fa-bars"></i></a>
+                <a href="#" class="navbar-brand" data-toggle="fullscreen">
+                    <strong>DULMS</strong>
+                    <div class="text-muted">Delta University Learning Management System</div>
+                </a>
+                <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user"><i class="fa fa-cog"></i></a>
+            </div>
+            <input type="hidden" id="LoginId" value="122510034" />
+            <input type="hidden" id="LoginType" value="1" />
+
+            <ul class="nav navbar-nav navbar-right hidden-xs nav-user">
+
+                <li class="hidden-xs">
+
+                    <a href="/Announcement/AllAnnouncement" class="dk notifications"><i class="fa fa-bullhorn"></i><span class="badge badge-sm up bg-danger m-l-n-sm Anncount"></span></a>
+                </li>
+                <li class="hidden-xs">
+
+                    <a href="/Messages/Message" class="dk messages"><i class="fa fa-comments"></i><span class="badge badge-sm up bg-warning m-l-n-sm Msgcount"></span></a>
+                </li>
+                <li class="hidden-xs">
+
+                    <a href="/Notifications/NotificationsList" class="dk notifications"><i class="fa fa-bell"></i><span class="badge badge-sm up bg-danger m-l-n-sm Notcount"></span></a>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle c-p" data-toggle="dropdown">
+                        <span class="thumb-sm avatar pull-left">
+                            <img id="user_img" class="thum-img" data-gender="M" />
+                        </span>
+                        <span id="username">
+122510034
+                        </span><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-r-sm" style="width:220px">
+                        <span class="arrow top" style="left: 75%"></span>
+                        <li><a href="/UserProfile/AccountSettings"><i class="fa fa-gear"></i>Account Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/Announcement/TodoCalendar" class="events"><i class="fa fa-calendar"></i><span class="badge bg-warning pull-right"></span>Events Calendar</a></li>
+                        <li><a href="/Announcement/AllAnnouncement" class="announcement"><i class="fa fa-bullhorn"></i><span class="badge bg-warning pull-right"></span>Announcements</a></li>
+                        <li><a href="/Messages/Message" class="messages"><i class="fa fa-comments"></i><span class="badge bg-warning pull-right"></span>Messages</a></li>
+                        <li><a href="/Notifications/NotificationsList" class="notifications"><i class="fa fa-bell"></i><span class="badge bg-danger pull-right"></span>Notifications</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../Support/SupportTickets"><i class="fa fa-question-circle"></i>Help & Suggestions</a></li>
+                        <li><a href="../Videos/Videos" class="videos"><i class="fa fa-play-circle"></i><span class="badge pull-right"></span>Product Videos</a></li>
+                        <li class="divider"></li>
+                        <li><a class="btn-lock c-p"><i class="fa fa-lock"></i>Lock Screen</a></li>
+                        <li><a href="/Login/SignOut" class="btn-logout"><i class="fa fa-sign-out"></i>Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+        <section class="b-t">
+            <section class="hbox stretch" style="height:100%;">
+                <!-- .aside -->
+                <aside class="bg-dark lter aside-lg hidden-print" id="nav">
+                    <section class="vbox">
+                        <header class="header bg-primary lter text-center clearfix semester-intro">
+                            <table>
+                                <tr>
+                                    <td style="text-align: left; width: 30px;">
+                                        <span class="thumb avatar" style="border:0; width: 30px; height: 48px;">
+                                            <i class="fa fa-calendar m-t-sm fa-2x"></i>
+                                        </span>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <span class="hidden-nav-xs clear">
+                                            <strong class="h6" style="font-weight: bold;" id="SemesterId"></strong>
+                                            <span class="text-muted text-xs block">Current Semester</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </header>
+                        <section class="w-f scrollable">
+                            <!-- nav -->
+                            <nav class="nav-primary hidden-xs">
+                                <ul class="nav side-menu" style="margin-top: -2px;">
+                                    <li>
+                                        <a href="/Profile/StudentProfile">
+                                                    <i class="fa fa-home icon"><b style=" background-color: #9a9a9a"></b></i>
+                                                    <span>Home</span>
+                                                </a>
+                                    </li>
+                                    <li class="last" data-moduleid="2010">
+                                        <a class="c-p" style="overflow: hidden;">
+                                                            <i class="fa fa-user icon"><b style="background-color: #ffc333"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span>
+                                                            <span>Personal Information 
+
+                                                            </span>
+                                                        </a>
+
+                                        <ul class="nav lt">
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Profile/UpdateRequest">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Graduation Data</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Profile/UpdateData">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Students Update Data</span>
+                                                                    </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li class="last" data-moduleid="2010">
+                                        <a class="c-p" style="overflow: hidden;">
+                                                            <i class="fa fa-circle"><b style="background-color: #4cc0c1"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span>
+                                                            <span>Documents Requests 
+
+                                                            </span>
+                                                        </a>
+
+                                        <ul class="nav lt">
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Documents/GraduationRequests">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Certificates Request</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Documents/NewRequest">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Request A New Document </span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Documents/RequestsList">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Documents Requests History</span>
+                                                                    </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li class="last" data-moduleid="2010">
+                                        <a class="c-p" style="overflow: hidden;">
+                                                            <i class="fa fa-clock-o icon"><b style="background-color: #fb6b5b"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span>
+                                                            <span>Study History 
+
+                                                            </span>
+                                                        </a>
+
+                                        <ul class="nav lt">
+                                            <li>
+                                                <a class="c-p menu-link" href="../../CourseHistory/ProgramChart">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Program Chart</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../CourseHistory/History">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Course History</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../GPAProgress/Progress">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">GPA Progress</span>
+                                                                    </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li class="last" data-moduleid="2010">
+                                        <a class="c-p" style="overflow: hidden;">
+                                                            <i class="fa fa-music icon"><b style="background-color: #bd7ad3"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span>
+                                                            <span>Stud. Activities 
+                                                                <b class="badge bg-danger m-l-xs">رعاية</b>
+
+                                                            </span>
+                                                        </a>
+
+                                        <ul class="nav lt">
+                                            <li>
+                                                <a class="c-p menu-link" href="../../StudentActivity/Application">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Activities Registeration</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../StudentEvents/StudentEventsArchieve">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Trips Reservations</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../StudentFinancial/GraduationPartyReservation">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Graduation Party Tickets</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../StudentEvents/StudentEventsPlaysArchieve">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Sports Reservations</span>
+                                                                    </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li class="last" data-moduleid="2010">
+                                        <a class="c-p" style="overflow: hidden;">
+                                                            <i class="fa fa-question-circle icon"><b style="background-color: #ab3fce"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span>
+                                                            <span>Exams &amp; Grades 
+
+                                                            </span>
+                                                        </a>
+
+                                        <ul class="nav lt">
+                                            <li>
+                                                <a class="c-p menu-link" href="../../StudentExamSchedual/examsschedule">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Exams Schedule</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../FinalResult/Results">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Final Result</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../GradeBook/StudentGradeBook">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Grades Book</span>
+                                                                    </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li class="last" data-moduleid="2010">
+                                        <a class="c-p" style="overflow: hidden;">
+                                                            <i class="fa fa-money icon"><b style="background-color: #c18f76"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span>
+                                                            <span>Financial 
+
+                                                            </span>
+                                                        </a>
+
+                                        <ul class="nav lt">
+                                            <li>
+                                                <a class="c-p menu-link" href="../../StudentFinancial/StudentPermission">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Payment Permissions</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Financial/StudentStatement">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Balance Statement</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Financial/StudentBalances">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Balance</span>
+                                                                    </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li class="last" data-moduleid="2010">
+                                        <a class="c-p" style="overflow: hidden;">
+                                                            <i class="fa fa-list-ol icon"><b style="background-color: #c18f76"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span>
+                                                            <span>Placements 
+
+                                                            </span>
+                                                        </a>
+
+                                        <ul class="nav lt">
+                                            <li>
+                                                <a class="c-p menu-link" href="../../PlacementStudent/Placements">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Placement Test</span>
+                                                                    </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li class="last" data-moduleid="2010">
+                                        <a class="c-p" style="overflow: hidden;">
+                                                            <i class="fa fa-dot-circle-o icon"><b style="background-color: #f257dc"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span>
+                                                            <span>Others 
+
+                                                            </span>
+                                                        </a>
+
+                                        <ul class="nav lt">
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Desires/DepartmentsDesires">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Department Desires</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../CoursesSpecs/CoursesSpecification">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Course Specifications</span>
+                                                                    </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li class="last" data-moduleid="2010">
+                                        <a class="c-p" style="overflow: hidden;">
+                                                            <i class="fa fa-list-ol icon"><b style="background-color: #bd7ad3"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span>
+                                                            <span>E-Learning 
+
+                                                            </span>
+                                                        </a>
+
+                                        <ul class="nav lt">
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Quizzes/StudentQuizzes">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Quizzes</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../ExamQuiz/StudentExams">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Exams</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Assignment/AssignmentStudentList">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Assigments</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Discussion/StudentDiscussionList">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Discussions</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../StudentMeeting/MeetingList">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Meetings</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../ELearning/StudentElearning">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Files &amp; Materials</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../ELearning/StudentQuestionBank">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Question Bank</span>
+                                                                    </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li class="last" data-moduleid="2010">
+                                        <a class="c-p" style="overflow: hidden;">
+                                                            <i class="fa fa-money"><b style="background-color: #ab3fce"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span>
+                                                            <span>Hotel Reservation 
+
+                                                            </span>
+                                                        </a>
+
+                                        <ul class="nav lt">
+                                            <li>
+                                                <a class="c-p menu-link" href="../../StudentHotel/ReserveHotelRoom">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Reserve Room</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../StudentHotel/HotelRoomHistory">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Reservation History</span>
+                                                                    </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li class="last" data-moduleid="2010">
+                                        <a class="c-p" style="overflow: hidden;">
+                                                            <i class="fa fa-file-text-o icon"><b style="background-color: #c18f76"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span>
+                                                            <span>Academic Reg. 
+
+                                                            </span>
+                                                        </a>
+
+                                        <ul class="nav lt">
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Registered/CoursesRegisteration">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Course Reg.</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Registered/RegisterationProposal">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Registeration Proposal</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Registered/RegisterCourse">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Transcript</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../StudentSchedual/Schedual">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Studying Schedule</span>
+                                                                    </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li class="last" data-moduleid="2010">
+                                        <a class="c-p" style="overflow: hidden;">
+                                                            <i class="fa fa-flask icon"><b style="background-color: #f257dc"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span>
+                                                            <span>Semester Works 
+
+                                                            </span>
+                                                        </a>
+
+                                        <ul class="nav lt">
+                                            <li>
+                                                <a class="c-p menu-link" href="../../SemesterWorks/absence">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Lectures Absence</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../SemesterWorks/warnings">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Absence Warnings</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../QRCode/ScanQR">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Lecture Attendance</span>
+                                                                    </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li class="last" data-moduleid="2010">
+                                        <a class="c-p" style="overflow: hidden;">
+                                                            <i class="fa fa-angle-down "><b style="background-color: #f257dc"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span>
+                                                            <span>Questionnaires 
+
+                                                            </span>
+                                                        </a>
+
+                                        <ul class="nav lt">
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Questionnaire/Questionnaire">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Questionnaires</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../StudentQuestionnaire/StudentQuestionnaireArchieve">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Survey</span>
+                                                                    </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li class="last" data-moduleid="2010">
+                                        <a class="c-p" style="overflow: hidden;">
+                                                            <i class="fa fa fa-bullhorn icon"><b style="background-color: #f257dc"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span>
+                                                            <span>Surveys &amp; Announce. 
+
+                                                            </span>
+                                                        </a>
+
+                                        <ul class="nav lt">
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Announcement/TodoCalendar">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Events Calendar</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Announcement/AllAnnouncement">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Announcements</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Messages/Message">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Messages</span>
+                                                                    </a>
+                                            </li>
+                                            <li>
+                                                <a class="c-p menu-link" href="../../Notifications/NotificationsList">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Notifications</span>
+                                                                    </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+                                    <li class="last" data-moduleid="2010">
+                                        <a class="c-p" style="overflow: hidden;">
+                                                            <i class="fa fa-angle-down "><b style="background-color: #f257dc"></b></i><span class="pull-right"><i class="fa fa-angle-down text"></i><i class="fa fa-angle-up text-active"></i></span>
+                                                            <span>Military Service 
+
+                                                            </span>
+                                                        </a>
+
+                                        <ul class="nav lt">
+                                            <li>
+                                                <a class="c-p menu-link" href="../../MilitaryServices/StudentMilitaryServices">
+                                                                        <b class="badge bg-danger pull-right"></b>
+                                                                        <i class="fa fa-angle-right"></i>
+                                                                        <span class="title">Military Service</span>
+                                                                    </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+
+                                </ul>
+                            </nav>
+                            <!-- / nav -->
+                        </section>
+                        <footer class="footer lt hidden-xs b-t b-dark pos-abt">
+                            <a href="#nav" data-toggle="class:nav-xs" id="btn-close-aside" style="min-width: 30px;" class="pull-right btn btn-sm btn-dark btn-icon"><i class="fa fa-angle-left text"></i><i class="fa fa-angle-right text-active"></i></a>
+                        </footer>
+                    </section>
+                </aside>
+                <!-- /.aside -->
+                <section id="content" class="b-l">
+                    <ul id="sitetree" class="breadcrumb no-border no-radius b-b b-light p-l-xs">
+                        <li><i class="fa fa-home"></i>Home</li>
+                    </ul>
+                    <section id="main" style=" height: calc(100% - 35px); position: relative;">
+
+
+                        <style>
+                            .notify-item:first-child,
+                            .message-item:first-child {
+                                border: 0;
+                            }
+
+                            .notify-item:last-child,
+                            .message-item:last-child {
+                                border-bottom: 0;
+                            }
+
+                            .panel-heading .nav-tabs {
+                                border-bottom: 1px solid #cccccc;
+                            }
+
+                            .panel-heading .nav-tabs>li>a {
+                                line-height: 2.5;
+                            }
+
+                            .page-contect .nav-tabs .badge {
+                                position: absolute;
+                                right: 10px;
+                                top: -5px;
+                            }
+
+                            .page-contect .nav>li>a {
+                                padding: 5px 10px;
+                            }
+
+                            .panel-heading .nav-tabs>li.active>a,
+                            .panel-heading .nav-tabs>li.active>a:hover,
+                            .panel-heading .nav-tabs>li.active>a:focus {
+                                border-right: 1px solid #ccc;
+                                border-left: 1px solid #ccc;
+                            }
+                        </style>
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+                        <section class="hbox stretch page-contect" style="display:none">
+                            <section class="vbox b-r b-b">
+                                <section class="scrollable">
+                                    <div class="wrapper p-t-none">
+                                        <h3 class="m-b-md">
+                                            <span class="text-primary">Welcome back, </span>
+                                            <small id="stud-name-2" class="text-muted m-t-sm block"></small>
+                                        </h3>
+                                        <p class="m-l">Congratulations, You are now on the electronic portal of delta university for science and technology on its cloud servers.</p>
+                                        <p class="m-l">We're glad you're here, and will be happy to help you.</p>
+                                        <section class="panel panel-default m-t">
+                                            <header class="panel-heading text-right bg-light p-l-none p-r-none">
+                                                <ul class="nav nav-tabs nav-white">
+                                                    <li class="active"><a class="Files" href="#Files" data-toggle="tab"><i class="fa fa-file"></i>Files<span class="badge bg-danger"></span></a></li>
+
+                                                    <li><a class="Events" href="#Events" data-toggle="tab"><i class="fa fa-calendar"></i>Today Events<span class="badge bg-danger"></span></a></li>
+
+                                                    <li><a class="notifications" href="#notifications" data-toggle="tab"><i class="fa fa-bell"></i> Latest Notifications<span class="badge bg-danger"></span></a></li>
+                                                    <li><a class="messages" href="#messages" data-toggle="tab"><i class="fa fa-comments"></i>Latest Messages<span class="badge bg-warning"></span></a></li>
+                                                </ul>
+                                            </header>
+                                            <div class="panel-body no-padder">
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active" id="Files">
+
+                                                        <div class="wrapper">
+                                                            <section class="panel-body p-t" id="FilesBody">
+
+
+
+                                                            </section>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="tab-pane " id="Events">
+                                                        <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+                                                            <li class="list-group-item event-item text-center padder-v-lg">
+                                                                <i class="fa  fa-calendar text-light fa-4x"></i>
+                                                                <p class="m-t">No events founded for you today.</p>
+                                                            </li>
+                                                        </ul>
+                                                        <footer class="panel-footer text-right">
+                                                            <a href="/Announcement/TodoCalendar" class="link">See All Events</a>
+                                                        </footer>
+                                                    </div>
+
+                                                    <div class="tab-pane" id="notifications">
+                                                        <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+                                                            <li class="list-group-item notify-item text-center padder-v-lg">
+                                                                <i class="fa fa-bell text-light fa-4x"></i>
+                                                                <p class="m-t">No notification founded for you untill now.</p>
+                                                            </li>
+                                                        </ul>
+                                                        <footer class="panel-footer text-right">
+                                                            <a href="/Notifications/NotificationsList" class="link">See All Notifications</a>
+                                                        </footer>
+                                                    </div>
+                                                    <div class="tab-pane" id="messages">
+                                                        <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+                                                            <li class="list-group-item notify-item text-center padder-v-lg">
+                                                                <i class="fa fa-comments text-light fa-4x"></i>
+                                                                <p class="m-t">No messages founded for you untill now.</p>
+                                                            </li>
+                                                        </ul>
+                                                        <footer class="panel-footer text-right">
+                                                            <a href="/Messages/Message" class="link">See All Messages</a>
+                                                        </footer>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </section>
+                            </section>
+                            <aside class="aside-xxl">
+                                <section class="vbox">
+                                    <section class="scrollable">
+                                        <div class="wrapper">
+                                            <div class="clearfix m-b">
+                                                <a class="pull-left thumb m-r-sm">
+                                                    <div class="img-circle b-a img-border">
+                                                        <img src="" class="img-circle b-tr b-2x" id="stud-img">
+                                                    </div>
+                                                </a>
+                                                <div class="clear">
+                                                    <div class="h5 m-t m-b-xs" id="stud-name"></div>
+                                                    <small class="text-muted"><i class="fa fa-credit-card"></i><span id="stud-id"></span></small>
+                                                </div>
+                                            </div>
+                                            <div class="panel wrapper bg-info m-b-lg">
+                                                <div class="row">
+                                                    <div class="col-xs-4 text-center b-r">
+                                                        <a>
+                                    <span class="m-b-xs h4 block" id="stud-level"></span> <small class="text-muted" title="Educational Level">LEVEl</small>
+                                </a>
+                                                    </div>
+                                                    <div class="col-xs-4 text-center b-r">
+                                                        <a>
+                                    <span class="m-b-xs h4 block" id="stud-cgpa"></span>
+                                    <small class="text-muted" title="Cumulative Grade Point Average">CGPA</small>
+                                </a>
+                                                    </div>
+                                                    <div class="col-xs-4 text-center">
+                                                        <a>
+                                    <span class="m-b-xs h4 block" id="stud-hours"></span>
+                                    <small class="text-muted" title="Total Passed Hours">TPH</small>
+                                </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <small class="text-uc text-xs text-muted">about me</small>
+                                            <div class="line"></div>
+                                            <div class="m-b-sm m-l-md"><small class="text-uc text-muted">Faculty:</small><small class="m-l-xs" id="stud-faculty"></small></div>
+                                            <div class="m-b-sm m-l-md"><small class="text-uc text-muted">Program:</small><small class="m-l-xs" id="stud-prog"></small></div>
+                                            <div class="m-b-sm m-l-md"><small class="text-uc text-muted">Guide:</small><small class="m-l-xs" id="stud-guid"></small></div>
+                                            <div class="m-b-md m-l-md"><small class="text-uc text-muted">Status:</small><small class="m-l-xs" id="stud-status"></small></div>
+
+                                            <small class="text-uc text-xs text-muted m-t">graduation info.</small>
+                                            <div class="line"></div>
+                                            <div class="pos-rlt" style="height:180px;">
+                                                <div class="easypiechart" style="position:absolute; left:calc(50% - 100px);" data-line-width="7" data-loop="false" data-track-color="#eeeeee" data-bar-color="#5fc7c8" data-size="160" data-scale-color="#f5f5f5" data-line-cap="butt" data-animate="1000"
+                                                    data-percent="0">
+                                                    <span class="h2" id="r-hours"></span><span class="unit h5">Hrs</span>
+                                                    <div class="easypie-text">to be Graduated</div>
+                                                </div>
+                                            </div>
+                                            <div class="btn-group btn-group-justified m-b">
+                                                <a href="../Support/SupportTickets" class="btn btn-primary btn-rounded">
+                            <span class="text"><i class="fa fa-question-circle"></i>Help & Suggestions </span>
+                        </a>
+                                                <a href="../Videos/Videos" class="btn btn-dark btn-rounded">
+                            <i class="fa fa-play-circle"></i> Product Videos
+                        </a>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </section>
+                            </aside>
+                        </section>
+                        <div class="text-center padder-v-lg m-t-xl loader">
+                            <img class="x32" src="/assets/img/Preloader_3.gif" />
+                            <strong class="block m-t-sm">Please Wait, Loading Page Content...</strong>
+                        </div>
+
+                        <li class="list-group-item notify-item" style="display:none">
+                            <a href="#" class="thumb-sm pull-left m-r-sm">
+        <img src="" class="img-circle notify-img">
+    </a>
+                            <a href="#" class="clear">
+        <time class="pull-right timeago notify-time"></time>
+        <strong class="notify-user"></strong>
+        <div class="notify-job label"></div>
+        <small class="notify-text block m-t-sm"></small>
+    </a>
+                        </li>
+
+                        <li class="list-group-item message-item" style="display:none">
+                            <a href="#" class="thumb-sm pull-left m-r-sm">
+        <img src="" class="img-circle message-img">
+    </a>
+                            <a href="#" class="clear">
+        <time class="pull-right timeago message-time"></time>
+        <strong class="message-user"></strong>
+        <div class="message-job label"></div>
+        <small class="message-text block m-t-sm"></small>
+    </a>
+                        </li>
+                        <li class="list-group-item event-item" style="display:none">
+
+                            <a href="#" class="clear">
+        <strong class="event-title"></strong>
+        <div class="event-type label"></div>
+        <small class="event-text block m-t-sm"></small>
+    </a>
+                            <div class="row text-right">
+                                <div class="col-sm-12 padder-v-sm">
+
+                                    <button class="c-p link btn-remove"><i class="fa fa-trash-o"></i>Remove Event</button>
+                                    <button class="c-p link btn-done"><i class="fa fa-check-circle-o"></i>Done</button>
+                                </div>
+                            </div>
+
+                        </li>
+
+                        <article class="media file-item" style="display:none">
+                            <span class="pull-left thumb-sm">
+        <img class="file-icon" src="" />
+    </span>
+                            <div class="media-body" style="margin-top:7px;">
+                                <a class="h4 link FileName"></a>
+                                <small class="block m-t-sm Description"></small>
+                            </div>
+                        </article>
+                        <div class="text-center NoFiles" style="display:none">
+                            <i class="fa  fa-file text-light fa-4x"></i>
+                            <p class="m-t">No Files founded for you.</p>
+                        </div>
+                        <div id="Modal-CheckIfQuestionnaire" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content border-warning">
+                                    <div class="modal-header bg-warning text-white">
+                                        <h5 class="modal-title"><i class="fa fa-exclamation-triangle"></i> Important Notice</h5>
+                                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                                    </div>
+
+                                    <div class="modal-body text-center">
+                                        <div class="alert alert-warning mb-0" role="alert">
+                                            <strong>Attention!</strong> You must complete the questionnaire before continuing.
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                                        <a href="/Questionnaire/Questionnaire" class="btn btn-warning">Go to Questionnaire</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            $(function() {
+
+                                var j1 = $.ajax({
+                                    type: "POST",
+                                    url: "/Profile/GetStudentAcademicData",
+                                    data: null,
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function(response) {
+                                        var profile = response[0];
+                                        $("#stud-img, #user_img, #user_img_deid, #user_img_access, #user_img_lock").attr('src', "https://dep.deltauniv.edu.eg" + profile["PhotoPath"]);
+                                        $("#stud-name, #stud-name-2").text(profile["Student_Name"]);
+                                        $("#stud-id").text(profile["Student_ID"]);
+                                        if ('0' > 0) {
+                                            $("#stud-level").text("Blocked");
+                                            $("#stud-cgpa").text("Blocked");
+                                            $("#stud-hours").text("Blocked");
+                                            $("#r-hours").text("--");
+                                            $('.easypiechart').data('easyPieChart').update(0);
+                                        } else {
+                                            $("#stud-level").text(profile["Level"]);
+                                            $("#stud-cgpa").text(profile["Genral_Grade"]);
+                                            $("#stud-hours").text(profile["TP_Hours"]);
+                                            $("#r-hours").text(parseInt(profile["RequiredHours"]) - parseInt(profile["TP_Hours"]));
+                                            $('.easypiechart').data('easyPieChart').update(Math.round(((parseInt(profile["TP_Hours"]) / parseInt(profile["RequiredHours"])) * 100)));
+                                        }
+                                        $("#stud-faculty").text(profile["Faculty"]);
+                                        $("#stud-prog").html(profile["Program"]);
+                                        $("#stud-guid").html((profile["AcademicGuidance"] == '' ? '-' : profile["AcademicGuidance"]));
+                                        if (profile["Student_Status1"] == 1)
+                                            $("#stud-status").html('<span class="fa fa-circle text-success"></span>' + profile["Student_Status2"]);
+                                        if (profile["Student_Status1"] == 2)
+                                            $("#stud-status").html('<span class="fa fa-circle text-warning"></span>' + profile["Student_Status2"]);
+                                        if (profile["Student_Status1"] == 3)
+                                            $("#stud-status").html('<span class="fa fa-circle text-danger"></span>' + profile["Student_Status2"]);
+                                        if (profile["Student_Status1"] == 4)
+                                            $("#stud-status").html('<span class="fa fa-circle text-danger"></span>' + profile["Student_Status2"]);
+                                        if (profile["Student_Status1"] == 5)
+                                            $("#stud-status").html('<span class="fa fa-circle text-danger"></span>' + profile["Student_Status2"]);
+                                        if (profile["Student_Status1"] == 6)
+                                            $("#stud-status").html('<span class="fa fa-circle text-info"></span>' + profile["Student_Status2"]);
+                                    },
+                                    error: function(request, status, error) {
+                                        if (data.status == 302) {
+                                            SessionDied();
+                                        } else {
+                                            ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
+                                        }
+                                    }
+                                });
+                                var j2 = $.ajax({
+                                    type: "POST",
+                                    url: "/Profile/StudentFiles",
+                                    data: null,
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function(data) {
+                                        $('#FilesBody').empty();
+                                        if (data.length > 0) {
+                                            for (var i = 0; i < data.length; i++) {
+                                                var fileitem = $('.file-item:last').clone(true).removeAttr('style').attr({
+                                                    'data-id': data[i].FileId,
+                                                    "data-url": (data[i].ItemId_FK == null ? data[i].PageUrl : data[i].PageUrl + "?id=" + data[i].ItemId_FK)
+                                                });
+                                                $('.FileName', fileitem).text(data[i].FileName);
+                                                $('.Description', fileitem).text(data[i].Description);
+                                                //  $('.file-icon', fileitem).attr("src", data[i].FilePath);
+                                                $('.file-icon', fileitem).attr("src", "../assets/img/filestypes/" + GetFileTypeImg(data[i]["FileExtension"]));
+                                                $('.FileName', fileitem).text(data[i].FileName);
+                                                $('.FileName', fileitem).attr('filenameP', data[i].FileId);
+
+
+                                                fileitem.appendTo($('#FilesBody'));
+                                                if (data.length != (i + 1)) {
+                                                    fileitem.append($('<div class="line pull-in"></div>'));
+
+                                                }
+
+
+
+                                            }
+                                        } else {
+                                            $('.NoFiles:last').clone(true).removeAttr('style').appendTo("#FilesBody");
+                                        }
+                                    },
+                                    error: function(request, status, error) {
+                                        if (data.status == 302) {
+                                            SessionDied();
+                                        } else {
+                                            ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
+                                        }
+                                    }
+                                });
+                                var j3 = $.ajax({
+                                    type: "POST",
+                                    url: "/Profile/GetStudentsAbsenceWarningsNumber",
+                                    data: null,
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function(response) {
+                                        var ExistQuestionnaire = response;
+                                        var LoginType = $("#LoginType").val();
+                                        if (ExistQuestionnaire == true) {
+                                            if (LoginType == 1) {
+                                                $("#Modal-CheckIfQuestionnaire").modal();
+                                            }
+                                        }
+                                    },
+                                    error: function(request, status, error) {
+                                        if (data.status == 302) {
+                                            SessionDied();
+                                        } else {
+                                            ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
+                                        }
+                                    }
+                                });
+                                //var j4 = $.ajax({
+
+                                //    type: "GET",
+                                //    url: "/Announcement/GetTodayEvents",
+                                //    contentType: "application/json; charset=utf-8",
+                                //    dataType: "json",
+                                //    success: function (data) {
+                                //        if (data.Item1.length > 0) {
+                                //            $('#Events>ul').empty();
+                                //            for (var i = 0; i < data.Item1.length; i++) {
+                                //                var eventitem = $('.event-item:last').clone(true).removeAttr('style').attr({ 'data-id': data.Item1[i].EventsId });
+
+                                //                $('.event-title', eventitem).text(data.Item1[i].EventsTitle);
+                                //                $('.event-type', eventitem).text(data.Item1[i].EventsTypeName);
+                                //                $('.event-text', eventitem).html(data.Item1[i].EventsText);
+
+                                //                eventitem.appendTo($('#Events>ul'));
+                                //            }
+
+                                //            var count = data.Item2;
+                                //            $(".Events .badge", ".page-contect").text(count == 0 ? '' : count);
+
+                                //        }
+                                //    },
+                                //    error: function (request, status, error) {
+                                //        ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
+                                //    }
+                                //});
+                                $.when(j1, j2, j3).done(function() {
+
+                                    var notCount = $(".Notcount").text() == "0" ? "" : $(".Notcount").text();
+                                    $(".notifications .badge", ".page-contect").text(notCount);
+
+                                    var msgCount = $(".Msgcount").text() == "0" ? "" : $(".Msgcount").text();
+                                    $(".messages .badge", ".page-contect").text(msgCount);
+
+                                    $(".loader").hide();
+                                    $(".page-contect").show();
+                                });
+
+                                $(document).on('click', '.notify-item', function() {
+                                    var $taregt = $(this)
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/Notifications/SetNotificationSeen",
+                                        data: JSON.stringify({
+                                            NotificationId: $taregt.attr("data-id"),
+                                            PageUrl: $taregt.attr("data-url")
+                                        }),
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: function(response) {
+                                            if (response.ResultType == 'Success') {
+                                                var count = response.ResultOutput;
+                                                $(".notifications .badge").text(count == 0 ? '' : count);
+
+                                                $taregt.find('.notify-text .fa-circle').remove();
+                                                $taregt.css({
+                                                    "background-color": "unset"
+                                                });
+
+                                                var $url = $taregt.attr('data-url');
+                                                if (typeof $url != 'undefined')
+                                                    location.href = $url;
+                                            }
+                                        },
+                                        error: function(request, status, error) {
+                                            if (data.status == 302) {
+                                                SessionDied();
+                                            } else {
+                                                ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
+                                            }
+                                        }
+                                    });
+
+                                });
+
+                                $(document).on('click', '.btn-remove', function() {
+
+                                    var $eventId = $(this).closest(".event-item").attr('data-id');
+
+                                    // ajax call for delete event
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/Announcement/DeleteEvent",
+                                        data: JSON.stringify({
+                                            'EventId': $eventId
+                                        }),
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: function(response) {
+
+                                            if (response.ResultType == 'Success') {
+                                                ShowResultPopup("results-success", response.ResultMessage);
+                                                $(".event-item[data-id = " + $eventId + "]").remove();
+
+                                                if ($(".event-item").length == 1) {
+                                                    var element = '<ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">' +
+                                                        '<li class="list-group-item event-item text-center padder-v-lg">' +
+                                                        '<i class="fa  fa-bullhorn text-light fa-4x"></i>' +
+                                                        '<p class="m-t">No Events founded for you untill now.</p>' +
+                                                        '</li>' +
+                                                        '</ul>';
+                                                    $(element).insertBefore('#Events footer');
+                                                }
+                                            } else if (response.ResultType == 'SessionError') {
+                                                SessionDied();
+                                            } else if (response.ResultType == 'KnownError') {
+                                                ShowResultPopup("results-error", response.ResultMessage);
+                                            }
+                                        },
+                                        error: function(request, status, error) {
+                                            ShowResultPopup("results-error", "Unknown error, Please try again or call technical support.");
+                                        }
+                                    });
+
+                                });
+                                $(document).on('click', '.btn-done', function() {
+
+                                    var $eventId = $(this).closest(".event-item").attr('data-id');
+
+                                    // ajax call for done event
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/Announcement/UpdateAnnounceStatus",
+                                        data: JSON.stringify({
+                                            'EventId': $eventId
+                                        }),
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: function(response) {
+                                            if (response == 2) {
+                                                ShowResultPopup("results-warning", "No change happened in status");
+                                            } else if (response > 0) {
+
+                                                ShowResultPopup("results-success", "Successfully done this event");
+                                                $(".event-item[data-id = " + $eventId + "]").remove();
+
+                                                if ($(".event-item").length == 1) {
+                                                    var element = '<ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">' +
+                                                        '<li class="list-group-item event-item text-center padder-v-lg">' +
+                                                        '<i class="fa  fa-bullhorn text-light fa-4x"></i>' +
+                                                        '<p class="m-t">No Events founded for you untill now.</p>' +
+                                                        '</li>' +
+                                                        '</ul>';
+
+                                                    $(element).insertBefore('#Events footer');
+                                                }
+                                            } else if (response == -1) {
+                                                SessionDied();
+                                            } else if (response == 0) {
+                                                ShowResultPopup("results-error", "Unknown error, Please try again or call technical support.");
+                                            }
+                                        },
+                                        error: function(request, status, error) {
+                                            ShowResultPopup("results-error", "Unknown error, Please try again or call technical support.");
+                                        }
+                                    });
+                                });
+
+                                //Notification
+                                $(document).on('click', '.notifications', function() {
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/Notifications/GetStudentLatestNotifications",
+                                        data: null,
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: function(data) {
+                                            if (data.length > 0) {
+                                                $('#notifications>ul').empty();
+                                                for (var i = 0; i < data.length; i++) {
+                                                    var notifyitem = $('.notify-item:last').clone(true).removeAttr('style').attr({
+                                                        'data-id': data[i].NotificationId,
+                                                        "data-url": (data[i].ItemId_FK == null ? data[i].PageUrl : data[i].PageUrl + "?id=" + data[i].ItemId_FK)
+                                                    });
+                                                    image_path = imagecheck(data[i].FromUserId, data[i].PhotoPath, data[i].FromUserType);
+                                                    $('.notify-img', notifyitem).attr("src", image_path);
+                                                    $('.notify-user', notifyitem).text(data[i].FromUserName);
+                                                    $('.notify-job', notifyitem).text(data[i].FromUserJob).addClass(data[i].FromUserType == 2 ? "label-success" : "label-info");
+                                                    $('.notify-text', notifyitem).html(data[i].NotifyExplain);
+                                                    $('.notify-time', notifyitem).attr({
+                                                        "datetime": moment(data[i].NotifyDate).format('MMMM D, YYYY - hh:mm a'),
+                                                        "title": moment(data[i].NotifyDate).format('MMMM D, YYYY - hh:mm a')
+                                                    });
+                                                    if (!data[i].IsSeen) {
+                                                        $('.notify-text', notifyitem).prepend('<i title="NEW" class="fa fa-circle text-danger"></i>');
+                                                        notifyitem.css({
+                                                            "background-color": "#f1f1f1"
+                                                        });
+                                                    }
+                                                    notifyitem.appendTo($('#notifications>ul'));
+                                                }
+                                            }
+                                        },
+                                        error: function(request, status, error) {
+                                            if (data.status == 302) {
+                                                SessionDied();
+                                            } else {
+                                                ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
+                                            }
+                                        }
+                                    });
+                                });
+                                //Message
+                                $(document).on('click', '.messages', function() {
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/Messages/GetStudentLatestMessages",
+                                        data: null,
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: function(data) {
+                                            if (data.length > 0) {
+                                                $('#messages>ul').empty();
+                                                for (var i = 0; i < data.length; i++) {
+                                                    var messageitem = $('.message-item:last').clone(true).removeAttr('style');
+                                                    image_path = imagecheck(data[i].UserId, data[i].PhotoPath, data[i].Type);
+                                                    $('.message-img', messageitem).attr("src", image_path);
+                                                    $('.message-user', messageitem).text(data[i].NameEn);
+                                                    $('.message-job', messageitem).text(data[i].Job).addClass(data[i].Type == 2 ? "label-success" : "label-info");
+                                                    $('.message-text', messageitem).html(data[i].Body);
+                                                    $('.message-time', messageitem).attr({
+                                                        "datetime": moment(data[i].MessageDate).format('MMMM D, YYYY - hh:mm a'),
+                                                        "title": moment(data[i].MessageDate).format('MMMM D, YYYY - hh:mm a')
+                                                    });
+                                                    if (data[i].MessageDir == 'To')
+                                                        $('.message-text', messageitem).prepend('<i class="fa fa-mail-reply text-muted" title="From You"></i>');
+                                                    else
+                                                        $('.message-text', messageitem).prepend('<i class="fa fa-mail-forward text-muted" title="To You"></i>');
+                                                    if (!data[i].IsSeen) {
+                                                        $('.message-text', messageitem).prepend('<i title="NEW" class="fa fa-circle text-danger"></i>');
+                                                        messageitem.css({
+                                                            "background-color": "#f1f1f1"
+                                                        });
+                                                    }
+                                                    messageitem.appendTo($('#messages>ul'));
+                                                }
+                                            }
+                                        },
+                                        error: function(request, status, error) {
+                                            if (data.status == 302) {
+                                                SessionDied();
+                                            } else {
+                                                ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
+                                            }
+                                        }
+                                    });
+                                });
+                                //files
+                                $(document).on('click', '.Files', function() {
+
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/Profile/StudentFiles",
+                                        data: null,
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: function(data) {
+                                            $('#FilesBody').empty();
+
+                                            if (data.length > 0) {
+                                                for (var i = 0; i < data.length; i++) {
+                                                    var fileitem = $('.file-item:last').clone(true).removeAttr('style').attr({
+                                                        'data-id': data[i].FileId,
+                                                        "data-url": (data[i].ItemId_FK == null ? data[i].PageUrl : data[i].PageUrl + "?id=" + data[i].ItemId_FK)
+                                                    });
+                                                    $('.FileName', fileitem).text(data[i].FileName);
+                                                    $('.Description', fileitem).text(data[i].Description);
+                                                    //  $('.file-icon', fileitem).attr("src", data[i].FilePath);
+                                                    $('.file-icon', fileitem).attr("src", "../assets/img/filestypes/" + GetFileTypeImg(data[i]["FileExtension"]));
+                                                    $('.FileName', fileitem).text(data[i].FileName);
+                                                    $('.FileName', fileitem).attr('filenameP', data[i].FileId);
+
+
+                                                    fileitem.appendTo($('#FilesBody'));
+                                                    if (data.length != (i + 1)) {
+                                                        fileitem.append($('<div class="line pull-in"></div>'));
+
+                                                    }
+
+
+
+                                                }
+                                            } else {
+                                                $('.NoFiles:last').clone(true).removeAttr('style').appendTo("#FilesBody");
+                                            }
+                                        },
+                                        error: function(request, status, error) {
+                                            if (data.status == 302) {
+                                                SessionDied();
+                                            } else {
+                                                ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
+                                            }
+                                        }
+                                    });
+                                });
+
+                            });
+                            //download
+                            $(document).on('click', '.FileName ', function(e) {
+                                var tt = $(this).attr('.filenameP');
+                                var url = "/Profile/DowloadFile?FileId=" + $(this).attr('filenameP');
+                                window.location.href = url;
+                            });
+
+                            function GetFileTypeImg(extenstion) {
+                                switch (extenstion) {
+                                    case '.pdf':
+                                        return "pdf.png";
+                                    case '.xlsx':
+                                        return "xlsx.png";
+                                    case '.xls':
+                                        return "xlsx.png";
+                                    case '.docx':
+                                        return "docx.png";
+                                    case '.doc':
+                                        return "docx.png";
+                                    case '.pptx':
+                                        return "pptx.png";
+                                    case '.ppt':
+                                        return "pptx.png";
+                                    case '.txt':
+                                        return "txt.png";
+                                    case '.wav':
+                                        return "mp3.png";
+                                    case '.wma':
+                                        return "avi.png";
+                                    case '.avi':
+                                        return "avi.png";
+                                    case '.mp4':
+                                        return "avi.png";
+                                    case '.mpeg':
+                                        return "avi.png";
+                                    case '.mov':
+                                        return "avi.png";
+                                    case '.wmv':
+                                        return "avi.png";
+                                    case '.zip':
+                                        return "zip.png";
+                                    case '.rar':
+                                        return "rar.png";
+                                    case '.png':
+                                        return "jpg.png";
+                                    case '.jpg':
+                                        return "jpg.png";
+                                    case '.jpeg':
+                                        return "jpg.png";
+                                    case '.jpg':
+                                        return "jpg.png";
+                                    case '.jpg':
+                                        return "jpg.png";
+                                    case '.bmp':
+                                        return "jpg.png";
+                                    case '.psd':
+                                        return "psd.png";
+                                    case '.mp3':
+                                        return "mp3.png";
+                                    default:
+                                        return "unknown.png";
+                                }
+                            }
+                        </script>
+
+
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+
+    <div id="Modal-ToDoList" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="text-align:center"><i class="fa fa-list"></i>TODO List</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <p class="text-muted">Please fill the fields below.</p>
+                            <div class="line line-dashed"></div>
+                        </div>
+                        <div class="col-sm-12 m-b">
+                            <label>Subject</label><label class="text-danger">*</label>
+                            <input class="form-control " id="todoSubject" type="text">
+                        </div>
+                        <div class="col-sm-12 m-b">
+                            <label>Body</label><label class="text-danger">*</label>
+                            <textarea class="form-control" id="todoBody" type="text"></textarea>
+                        </div>
+
+                        <div class="col-sm-12 m-b">
+                            <label>Start Date</label><label class="text-danger">*</label>
+                            <input id="todoDate-start" class="form-control datepicker" type="text" value="2026-06-05" placeholder="2026-06-05" readonly />
+                        </div>
+                        <div class="col-sm-12 m-b">
+                            <label>End Date</label><label class="text-danger">*</label>
+                            <input id="todoDate-end" class="form-control datepicker" type="text" value="2026-06-05" placeholder="2026-06-05" readonly />
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="line line-dashed">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 m-t">
+                            <div class="pull-right m-t-n">
+                                <span class="text-danger">Note:</span><span class="text-muted"> Required Fields.</span><strong class="text-danger h4">*</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btn-todo-List" type="button" class="btn btn-info" data-dismiss="modal">Save</button>
+                        <button id="btn-cancel-file" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="session-relogin modal in" data-backdrop="static" style="position:fixed">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="form-group padder-lg">
+                        <div class="row m-t-lg text-center padder">
+                            <div class="coll-sm-12">
+                                <div class="alert alert-danger"><i class="fa fa-ban-circle"></i><strong>OOPS!</strong> Your session died. please re-enter your password to continue.</div>
+                                <div class="thumb-lg">
+                                    <img id="user_img_deid" class="thum-img img-circle b-a b-light b-3x" data-gender="M" />
+                                </div>
+                                <p id="empname_deid" class="text-info h3 m-t m-b">
+                                    Fares Abdealrahim Awad Elsayed Ahmed Wezza
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="row m-t">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <input type="password" id="txt_psw_deid" class="form-control text-sm" placeholder="Enter password to continue">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success btn-continue-deid" style="min-width: unset;" type="button"><i class="fa fa-arrow-right"></i></button>
+                                    </span>
+                                    <div class="popover left animated fadeInLeft deid-caps" style="margin-left: -97px; margin-top: 265px;">
+                                        <div class="arrow"></div>
+                                        <div class="popover-content">
+                                            <img src="../assets/img/warning.png" alt="Warning" style="vertical-align: middle;" />
+                                            <span style="vertical-align: sub;">CapsLock is on.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="h5 m-t m-b" style="text-align: left; margin-top: 10px;" id="message_died"></p>
+                            </div>
+                            <div class="col-sm-2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lock-modal modal in">
+        <div class="modal-over">
+            <div class="modal-center animated fadeInUp text-center" style="width: 320px; margin: -100px 0 0 -160px;">
+                <div class="delta" style="width:310px;">
+                    <div class="deltaname">DULMS</div>
+                    <small class="copyrights text-muted">Delta University Learning Management System</small>
+                </div>
+                <div class="thumb-lg">
+                    <img id="user_img_lock" class="thum-img img-circle b-a b-light b-3x" data-gender="M" />
+                </div>
+                <p id="empname_lock" class="text-white h3 m-t m-b">
+                    <p id="empname_deid" class="text-info h3 m-t m-b">
+                        Fares Abdealrahim Awad Elsayed Ahmed Wezza
+                    </p>
+
+                </p>
+                <p class="text-white h5 m-t m-b">Locked</p>
+                <div class="input-group">
+                    <input id="txt_psw_lock" class="form-control text-sm" placeholder="Enter password to continue" type="password">
+                    <span class="input-group-btn">
+                            <button class="btn btn-success btn-continue-lock" style="min-width: unset;" type="button"><i class="fa fa-arrow-right"></i></button>
+                        </span>
+                    <div class="popover left animated fadeInLeft lock-caps" style="margin-left: -145px; margin-top: -5px;">
+                        <div class="arrow"></div>
+                        <div class="popover-content">
+                            <img src="../assets/img/warning.png" alt="Warning" style="vertical-align: middle;" />
+                            <span style="vertical-align: sub;">CapsLock is on.</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="h5 m-t m-b" style="text-align: left; margin-top: 10px;" id="message-lock"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="side-search">
+        <div class="col-md-12 m-t">
+            <input class="form-control input-lg arabic" placeholder="Write a part of text her ot start the search" type="text">
+            <span class="search-status text-light" style="top: 9px; right: 28px;"><i class="fa fa-search fa-2x"></i></span>
+        </div>
+        <div class="body pos-rlt">
+            <ul class="list-group no-border no-radius pos-rlt" onscroll="scrollSideSearch(this)">
+                <li class="padder-v-xs">
+                    <div class="text-center text-muted message m-t-lg">
+                        <i class="fa fa-folder-open fa-3x text-light"></i>
+                        <span class="m-t-xs block">
+                                The search results will appears here after loading,<br />
+                                And you can select from it
+                            </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="footer">
+            <button type="button" class="btn btn-default btn-sm">Close</button>
+            <div class="more-load m-t pull-right"></div>
+        </div>
+    </div>
+
+    <div id="Modal-QuestionTypes" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Question Types</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" id="QuestionTypes">
+
+                    </div>
+                    <div class="form-group CheckNoSelectQuestion"></div>
+                    <div class="modal-footer">
+                        <button id="btn-question-type" type="button" class="btn btn-info">Add</button>
+                        <button id="btn-cancel-file" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Modal-ViewImage-Ann" class="modal" style="text-align:center; padding:30px 20px; max-width:100%; max-height:100%; overflow:scroll;z-index:1000000">
+        <img id="img-large-view-ann" src="" style="width:100%;height:auto" />
+        <div style="position:fixed; background-color:rgba(46, 62, 78, 0.80); top:20px; right:40px; cursor:pointer; border:1px solid #e4e4e4; padding: 5px 4px 6px 8px; border-radius: 3px;" title="Close" data-dismiss="modal">
+            <i class="fa fa-times text-white fa-2x" style="top:15px;right:15px"></i>
+        </div>
+    </div>
+
+
+    <script src="/assets/js/nestable/jquery.nestable.js"></script>
+
+    <script src="/assets/js/charts/easypiechart/jquery.easy-pie-chart.js"></script>
+
+    <script src="/assets/js/fuelux/fuelux.js"></script>
+
+    <script src="/assets/js/intro/intro.min.js"></script>
+
+
+    <script src="/Scripts/moment.min.js"></script>
+    <script async>
+        $(document).on('click', ".skipLink", function() {
+            $.ajax({
+                type: "POST",
+                url: "/Announcement/UpdateSkipStatus",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data) {
+                    $(".announcement-lock").addClass("hide");
+                },
+                error: function(data, error) {
+                    if (data.status == 302) {
+                        SessionDied();
+                    } else {
+                        ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
+                    }
+                }
+            });
+        });
+
+        $(document).on('click', ".dismiss", function() {
+            var $id = $(this).closest('article').attr('data-annid');
+            var $container = $(this).closest('article');
+
+            if (1 == 1) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Profile/UpdateAnnounceStatus",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({
+                        "AnnouncementId": $id
+                    }),
+                    dataType: "json",
+                    success: function(data) {
+
+                        var $removed = $container;
+                        $($removed).remove();
+                        var siblingslengthh = $(".announcement-container .announcent-body").find("article").length;
+
+                        if (siblingslengthh == 0) {
+                            $(".announcement-lock").addClass("hide");
+                        }
+
+                        siblingslengthh--;
+                        var currentCount = parseInt($(".anncount").text());
+                        currentCount = --currentCount;
+
+                        if (isNaN(currentCount) || currentCount < 0)
+                            currentCount = 0;
+                        $(".anncount").text(currentCount);
+
+
+                    },
+                    error: function(data) {
+                        if (data.status == 302) {
+                            SessionDied();
+                        } else {
+                            ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
+                        }
+                    }
+                });
+            } else if (1 == 2) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/UpdateAnnounceStatus",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({
+                        "AnnouncementId": $id
+                    }),
+                    dataType: "json",
+                    async: false,
+                    success: function(data) {
+
+                        if (data == 1) {
+                            var $removed = $container;
+                            $($removed).remove();
+                            var siblingslength = $(".announcement-container .announcent-body").find("article").length;
+
+                            if (siblingslength == 0) {
+                                $(".announcement-lock").addClass("hide");
+                            }
+                            siblingslength--;
+
+                            var currentCount = parseInt($(".anncount").text());
+                            currentCount = --currentCount;
+
+                            if (isNaN(currentCount) || currentCount < 0)
+                                currentCount = 0;
+                            $(".anncount").text(currentCount);
+                        }
+                    },
+                    error: function(data) {
+                        if (data.status == 302) {
+                            SessionDied();
+                        } else {
+                            ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
+                        }
+                    }
+                });
+            }
+
+            $(".Anncount").text($(".anncount").text());
+
+        });
+    </script>
+    <script>
+        if ('False' == 'False') {
+            if ($(".announcement-lock").find("article").length > 0) {
+                $(".announcement-lock").removeClass("hide");
+            }
+        }
+
+        $(".byuser-img").each(function() {
+            $(this).attr({
+                "src": imagecheck($(this).attr("data-userId"), 'gender', $(this).attr("data-gender"), $('#LoginType').val())
+            })
+        });
+
+        var listusert;
+        var userActivity;
+        var countonline;
+
+
+        $('#todoBody').ckeditor({
+            height: '150px',
+            toolbar: [{
+                    name: 'tools',
+                    items: ['Maximize']
+                },
+                {
+                    name: 'clipboard',
+                    groups: ['clipboard', 'undo'],
+                    items: ['Cut', 'Copy', 'Paste', 'PasteText', 'Undo', 'Redo']
+                },
+                {
+                    name: 'paragraph',
+                    groups: ['list', 'indent', 'blocks', 'align', 'bidi'],
+                    items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']
+                },
+                {
+                    name: 'basicstyles',
+                    items: ['Bold', 'Italic', 'Underline', 'Strike', 'TextColor', 'BGColor']
+                },
+                {
+                    name: 'insert',
+                    items: ['Photo']
+                }
+            ]
+        });
+        var $Annid = '';
+        $(document).on('click', '.ToDoList', function() {
+            $(".announcement-lock").addClass("hide");
+            $Annid = $(this).parent().attr("data-annid");
+            var $title = $(this).parent().find(".title").text();
+            var $body = $(this).parent().find(".body").html();
+
+            $("#todoSubject").val($title);
+            $("#todoBody").val($body);
+
+        });
+
+        $(document).on('click', '#btn-todo-List', function() {
+
+            var obj = {
+                'announceId': $Annid,
+                'title': $('#todoSubject').val(),
+                'body': $('#todoBody').val(),
+                'startdate': $("#todoDate-start").val(),
+                'enddate': $("#todoDate-end").val(),
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Announcement/AddToDoList",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'JSON',
+                data: JSON.stringify(obj),
+                success: function(data) {
+                    if (data.Item2 == 1) {
+                        ShowResultPopup("results-success", data.Item1);
+                    } else if (data.Item2 == 2) {
+                        ShowResultPopup("results-warning", data.Item1);
+                    } else {
+                        ShowResultPopup("results-error", data.Item1);
+                    }
+                },
+                error: function(data) {
+                    if (data.status == 302) {
+                        SessionDied();
+                    } else {
+                        ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
+                    }
+                }
+            });
+        });
+
+
+        $('#btn-close-announcement').click(function(e) {
+            $.ajax({
+                type: "POST",
+                url: "/Profile/SetAnnouncmentsSeen",
+                data: null,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data) {},
+                error: function(request, status, error) {
+
+                }
+            });
+        });
+
+        $(".announcent-body .body").find("img").attr({
+            'href': "#Modal-ViewImage-Ann",
+            'data-toggle': "modal",
+            'class': 'ann-img'
+        });
+
+        $(document).on('click', '.ann-img', function() {
+
+            $('#img-large-view-ann').attr("src", $(this).attr("src"));
+        });
+
+        var date1;
+        var resultDate;
+        $.ajax({
+            type: "GET",
+            url: "/Profile/Gettime",
+            async: false,
+            dataType: "json",
+            traditional: true,
+            success: function(result) {
+                if (result == -1) {
+                    SessionDied();
+                } else {
+                    $("#SemesterId").text(result.CurrentSemesterName);
+                    resultDate = result.Date;
+                    date1 = moment(result.Date);
+                    var rr = date1.format("ddd, DD/MM/YYYY hh:mm:ss A")
+                    NationalityId = result.NationalityId;
+                    if (NationalityId == 133) {
+                        // $("#StudentPermission").remove();
+                        $("#StudentStatement").remove();
+                        $("#StudentBalances").remove();
+                        //$("#FinancialTab").remove();
+                    }
+
+                }
+
+
+            },
+            error: function(result) {},
+        })
+
+        function DrawQuestionTypes() {
+            $("#QuestionTypes").empty();
+            // load question types
+            $.ajax({
+                type: "POST",
+                url: "/Questions/GetQuestionsTypes",
+                data: null,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    var flist = response;
+                    $.each(flist, function(i, e) {
+                        var Radio = "<label class='radio'><input type='radio' class='rd-grp'  value='" + e.QuestionTypeId + "' name='QuestionRadios' id='RadioQuestion'><i class='" + e.icon + "'></i>" + e.QuestionTypeName + "</label>";
+                        $("#QuestionTypes").append(Radio);
+
+                    });
+                    $("#Modal-QuestionTypes").modal();
+                },
+                error: function(request, status, error) {}
+            });
+
+        }
+        $("#btn-question-type").click(function() {
+            var $me = $(this);
+            $me.addClass('disabled');
+            $me.html('<img class="x17" src="../assets/img/Preloader_3.gif" /> Loading...');
+            if ($('input[name="QuestionRadios"]:checked').val() != undefined) {
+                $(".CheckNoSelectQuestion").empty();
+                var QuestionType = $('input[name="QuestionRadios"]:checked').val();
+                var url = "/Questions/QuestionContainer?QuestionType=" + QuestionType;
+                window.location.href = url;
+            } else {
+                $me.removeClass('disabled');
+                $me.html('Add');
+                $(".CheckNoSelectQuestion").html('<p class="text-danger" style="text-align:Center"> Select Question Type Firstly</p>');
+            }
+
+        })
+        $(document).on('change', '#QuestionTypes input[type=radio]', function(e) {
+            $(".CheckNoSelectQuestion").empty();
+        });
+    </script>
+</body>
+
+</html>
