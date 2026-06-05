@@ -7,47 +7,47 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Delta Univerity</title>
-    <link href="/assets/css/app.v2.css" rel="stylesheet" />
+    <link href="../assets/css/app.v2.css" rel="stylesheet" />
 
-    <link href="/assets/css/mdtimepicker.css" rel="stylesheet" />
+    <link href="../assets/css/mdtimepicker.css" rel="stylesheet" />
 
-    <link href="/assets/js/fuelux/fuelux.css" rel="stylesheet" />
+    <link href="../assets/js/fuelux/fuelux.css" rel="stylesheet" />
 
-    <link href="/assets/js/nestable/nestable.css" rel="stylesheet" />
+    <link href="../assets/js/nestable/nestable.css" rel="stylesheet" />
 
-    <link href="/assets/js/datatables/datatables.css" rel="stylesheet" />
+    <link href="../assets/js/datatables/datatables.css" rel="stylesheet" />
 
-    <link href="/assets/css/app.css" rel="stylesheet" />
-
-
-    <link href="/assets/css/jquery-ui.css" rel="stylesheet" />
-
-    <link href="/assets/js/intro/introjs.css" rel="stylesheet" />
+    <link href="../assets/css/app.css" rel="stylesheet" />
 
 
-    <script src="/Scripts/Shared/jquery-1.10.2.min.js"></script>
-    <script src="/Scripts/moment.min.js"></script>
-    <script src="/assets/js/app.v2.js"></script>
+    <link href="../assets/css/jquery-ui.css" rel="stylesheet" />
 
-    <script src="/assets/js/jquery-ui.js"></script>
+    <link href="../assets/js/intro/introjs.css" rel="stylesheet" />
 
-    <script src="/assets/js/jquery.slim.js"></script>
 
-    <script src="/assets/js/app.js"></script>
+    <script src="../Scripts/Shared/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/moment.min.js"></script>
+    <script src="../assets/js/app.v2.js"></script>
 
-    <script src="/assets/js/charts/highcharts.js"></script>
+    <script src="../assets/js/jquery-ui.js"></script>
 
-    <script src="/assets/js/charts/highcharts-3d.js"></script>
+    <script src="../assets/js/jquery.slim.js"></script>
 
-    <script src="/assets/js/wysiwyg/ckeditor.js"></script>
+    <script src="../assets/js/app.js"></script>
 
-    <script src="/assets/js/wysiwyg/adapters/jquery.js"></script>
+    <script src="../assets/js/charts/highcharts.js"></script>
 
-    <script src="/assets/js/PreventXSS.js"></script>
-    <script src="/Scripts/Chat/jquery.signalR-2.4.1.min.js"></script>
-    <script src="/signalr/hubs" type="text/javascript"></script>
-    <link href="/assets/css/croping/cropper.css" rel="stylesheet">
-    <link href="/assets/css/croping/docs.css" rel="stylesheet">
+    <script src="../assets/js/charts/highcharts-3d.js"></script>
+
+    <script src="../assets/js/wysiwyg/ckeditor.js"></script>
+
+    <script src="../assets/js/wysiwyg/adapters/jquery.js"></script>
+
+    <script src="../assets/js/PreventXSS.js"></script>
+    <script src="../Scripts/Chat/jquery.signalR-2.4.1.min.js"></script>
+    <script src="../signalr/hubs" type="text/javascript"></script>
+    <link href="../assets/css/croping/cropper.css" rel="stylesheet">
+    <link href="../assets/css/croping/docs.css" rel="stylesheet">
 
     <style>
         html {
@@ -135,7 +135,7 @@
         }
     </style>
 
-    <link href="/content/themes/Dark.css" rel="stylesheet" />
+    <link href="../content/themes/Dark.css" rel="stylesheet" />
 
 </head>
 
@@ -228,7 +228,7 @@
                             <nav class="nav-primary hidden-xs">
                                 <ul class="nav side-menu" style="margin-top: -2px;">
                                     <li>
-                                        <a href="/Profile/StudentProfile">
+                                        <a href="StudentProfile.html">
                                                     <i class="fa fa-home icon"><b style=" background-color: #9a9a9a"></b></i>
                                                     <span>Home</span>
                                                 </a>
@@ -1019,7 +1019,7 @@
 
                                 var j1 = $.ajax({
                                     type: "POST",
-                                    url: "/Profile/GetStudentAcademicData",
+                                    url: "GetStudentAcademicData.html",
                                     data: null,
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
@@ -1067,7 +1067,7 @@
                                 });
                                 var j2 = $.ajax({
                                     type: "POST",
-                                    url: "/Profile/StudentFiles",
+                                    url: "StudentFiles.html",
                                     data: null,
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
@@ -1110,7 +1110,7 @@
                                 });
                                 var j3 = $.ajax({
                                     type: "POST",
-                                    url: "/Profile/GetStudentsAbsenceWarningsNumber",
+                                    url: "GetStudentsAbsenceWarningsNumber.html",
                                     data: null,
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
@@ -1916,7 +1916,7 @@
         var resultDate;
         $.ajax({
             type: "GET",
-            url: "/Profile/Gettime",
+            url: "Gettime.html",
             async: false,
             dataType: "json",
             traditional: true,
