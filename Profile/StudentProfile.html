@@ -1066,7 +1066,7 @@
                                     }
                                 });
                                 var j2 = $.ajax({
-                                    type: "POST",
+                                    type: "GET",
                                     url: "StudentFiles.html",
                                     data: null,
                                     contentType: "application/json; charset=utf-8",
@@ -1109,7 +1109,7 @@
                                     }
                                 });
                                 var j3 = $.ajax({
-                                    type: "POST",
+                                    type: "GET",
                                     url: "GetStudentsAbsenceWarningsNumber.html",
                                     data: null,
                                     contentType: "application/json; charset=utf-8",
@@ -1174,7 +1174,7 @@
                                 $(document).on('click', '.notify-item', function() {
                                     var $taregt = $(this)
                                     $.ajax({
-                                        type: "POST",
+                                        type: "GET",
                                         url: "/Notifications/SetNotificationSeen",
                                         data: JSON.stringify({
                                             NotificationId: $taregt.attr("data-id"),
@@ -1214,7 +1214,7 @@
 
                                     // ajax call for delete event
                                     $.ajax({
-                                        type: "POST",
+                                        type: "GET",
                                         url: "/Announcement/DeleteEvent",
                                         data: JSON.stringify({
                                             'EventId': $eventId
@@ -1254,7 +1254,7 @@
 
                                     // ajax call for done event
                                     $.ajax({
-                                        type: "POST",
+                                        type: "GET",
                                         url: "/Announcement/UpdateAnnounceStatus",
                                         data: JSON.stringify({
                                             'EventId': $eventId
@@ -1294,7 +1294,7 @@
                                 //Notification
                                 $(document).on('click', '.notifications', function() {
                                     $.ajax({
-                                        type: "POST",
+                                        type: "GET",
                                         url: "/Notifications/GetStudentLatestNotifications",
                                         data: null,
                                         contentType: "application/json; charset=utf-8",
@@ -1338,7 +1338,7 @@
                                 //Message
                                 $(document).on('click', '.messages', function() {
                                     $.ajax({
-                                        type: "POST",
+                                        type: "GET",
                                         url: "/Messages/GetStudentLatestMessages",
                                         data: null,
                                         contentType: "application/json; charset=utf-8",
@@ -1384,7 +1384,7 @@
                                 $(document).on('click', '.Files', function() {
 
                                     $.ajax({
-                                        type: "POST",
+                                        type: "GET",
                                         url: "/Profile/StudentFiles",
                                         data: null,
                                         contentType: "application/json; charset=utf-8",
@@ -1694,7 +1694,7 @@
     <script async>
         $(document).on('click', ".skipLink", function() {
             $.ajax({
-                type: "POST",
+                type: "GET",
                 url: "/Announcement/UpdateSkipStatus",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -1717,7 +1717,7 @@
 
             if (1 == 1) {
                 $.ajax({
-                    type: "POST",
+                    type: "GET",
                     url: "/Profile/UpdateAnnounceStatus",
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify({
@@ -1754,7 +1754,7 @@
                 });
             } else if (1 == 2) {
                 $.ajax({
-                    type: "POST",
+                    type: "GET",
                     url: "/Home/UpdateAnnounceStatus",
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify({
@@ -1862,7 +1862,7 @@
                 'enddate': $("#todoDate-end").val(),
             };
             $.ajax({
-                type: "POST",
+                type: "GET",
                 url: "/Announcement/AddToDoList",
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'JSON',
@@ -1889,7 +1889,7 @@
 
         $('#btn-close-announcement').click(function(e) {
             $.ajax({
-                type: "POST",
+                type: "GET",
                 url: "/Profile/SetAnnouncmentsSeen",
                 data: null,
                 contentType: "application/json; charset=utf-8",
@@ -1947,7 +1947,7 @@
             $("#QuestionTypes").empty();
             // load question types
             $.ajax({
-                type: "POST",
+                type: "GET",
                 url: "/Questions/GetQuestionsTypes",
                 data: null,
                 contentType: "application/json; charset=utf-8",
