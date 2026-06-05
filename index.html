@@ -146,7 +146,7 @@
               
               
                 <div class="forget"><a href="/PasswordRecovery/Verification">Forget your password?</a></div>
-                <input type="submit" name="Button1" value="Login" id="Button1" name="Login" />
+                <input type="button" value="Login" id="Button1" onclick="login()" />
                 <div class="error">
                     
                 </div>
@@ -186,6 +186,24 @@
 
         </section>
     </section>
+	<script>
+function login() {
+
+    let id = document.getElementById("txtname").value;
+    let pass = document.getElementById("txtpass").value;
+
+    if(id === "122510034" &&
+       pass === "30803011215475") {
+
+        window.location.href = "Profile/StudentProfile.html";
+
+    } else {
+
+        alert("Wrong ID or Password");
+
+    }
+}
+</script>
 
 </body>
 </html>
