@@ -876,25 +876,31 @@ console.log("subjectslist.length =", subjectslist.length);
                                                             "color": 'transparent'
                                                         }, 500);
                                                     }, 500);
-                                                    $.ajax({
-                                                        type: "GET",
-                                                        url: "StudentResult.html",
-                                                        data: null,
-                                                        contentType: "application/json; charset=utf-8",
-                                                        dataType: "json",
-                                                        success: function(response) {
+$.ajax({
+    type: "GET",
+    url: "StudentResult.html",
+    data: null,
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(response) {
 
-    console.log("StudentResult Loaded");
-    console.log(response);
+        console.log("StudentResult Loaded");
+        console.log(response);
 
-    $(".loader").hide();
-    $(".page-contect").show();
+        $(".loader").hide();
+        $(".page-contect").show();
 
-},
-                                                        error: function(request, status, error) {
-                                                            ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
-                                                        }
-                                                    });
+    },
+    error: function(request, status, error) {
+
+        console.log("ERROR:");
+        console.log(status);
+        console.log(error);
+        console.log(request.responseText);
+
+        ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
+    }
+});
                                     
                                                 }
 
