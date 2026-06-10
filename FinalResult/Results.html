@@ -876,12 +876,30 @@ console.log("subjectslist.length =", subjectslist.length);
                                                             "color": 'transparent'
                                                         }, 500);
                                                     }, 500);
-console.log("BEFORE STUDENT RESULT");
+$.ajax({
+    type: "GET",
+    url: "StudentResult.html",
+    dataType: "text",
 
-$(".loader").hide();
-$(".page-contect").show();
+    success: function(response) {
 
-alert("WORKING");
+        var coursesObj = JSON.parse(response);
+
+        console.log("StudentResult Loaded");
+        console.log(coursesObj);
+
+        $(".loader").hide();
+        $(".page-contect").show();
+
+    },
+
+    error: function(request, status, error) {
+
+        console.log(status);
+        console.log(error);
+
+    }
+});
                                     
                                                 }
 
