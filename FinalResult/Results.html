@@ -851,6 +851,12 @@
                                             SessionDied();
                                         } else {
                                             var subjectslist = response.Item1;
+
+console.log("Item1 =", response.Item1);
+console.log("Item2 =", response.Item2);
+console.log("subjectslist =", subjectslist);
+console.log("subjectslist.length =", subjectslist.length);
+                                            
                                             if (subjectslist.length == 0) {
 
                                                 if (response.Item2.length > 0) {
