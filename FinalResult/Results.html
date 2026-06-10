@@ -876,51 +876,14 @@
                                                         contentType: "application/json; charset=utf-8",
                                                         dataType: "json",
                                                         success: function(response) {
-                                                            var coursesObj = response;
-                                                            if (coursesObj.length == 0) {
-                                                                $('#course-container').html("No courses registered at this semester.");
-                                                            } else {
-                                                                if (coursesObj[0]["Code"] == "-1") {
-                                                                    $('#course-container').html('<div class="text-center padder-v-lg m-t-xl">' +
-                                                                        '<i class="fa fa-ban fa-4x text-danger"></i>' +
-                                                                        '<p class="block m-t-sm m-b-md">Your result is blocked becuase of the following reasons.</p>' +
-                                                                        '<p class="block m-t-sm m-b-md">' + coursesObj[0]["Name"] + '</p>' +
-                                                                        '</div>');
-                                                                    $('.semester').closest('.form-group').remove();
-                                                                } else {
-                                                                    $('#course-container').empty();
-                                                                    for (var i = 0; i < coursesObj.length; i++) {
-                                                                        var courseitem = $('.course-item:last').clone(true).show();
-                                                                        $('.course-name', courseitem).text(coursesObj[i]["Code"] + " - " + coursesObj[i]["Name"]);
-                                                                        $('.grade1', courseitem).text(coursesObj[i]["Grade"]);
-                                                                        //$('.grade2', courseitem).text(coursesObj[i]["Grade2"]);
-                                                                        $('.status', courseitem).css("color", coursesObj[i]["BgColor"]);
-                                                                        if (coursesObj[i]["Grade"] == "F" || coursesObj[i]["Grade"] == "FAIL") {
-                                                                            $('.grade-icon', courseitem).html('<i class="fa fa-times"></i>');
-                                                                            $('.grade-status', courseitem).text('Failed');
-                                                                        } else if (coursesObj[i]["Grade"] == "W") {
-                                                                            $('.grade-icon', courseitem).html('<i class="fa fa-reply"></i>');
-                                                                            $('.grade-status', courseitem).text('Withdrawed');
-                                                                        } else if (coursesObj[i]["Grade"] == "I") {
-                                                                            $('.grade-icon', courseitem).html('<i class="fa fa-clock-o"></i>');
-                                                                            $('.grade-status', courseitem).text('Postponed');
-                                                                        } else {
-                                                                            $('.grade-icon', courseitem).html('<i class="fa fa-check"></i>');
-                                                                            $('.grade-status', courseitem).text('Passed');
-                                                                        }
-                                                                        courseitem.appendTo($('#course-container'));
-                                                                    }
-                                                                    $('.semester').text(coursesObj[0]["Semester"]);
-                                                                    $('.sgpa').html(coursesObj[0]["SGPA"] + " / 4");
-                                                                    $('.cgpa').html(coursesObj[0]["CGPA"] + " / 4");
-                                                                    //$('.sgpa-grade').html(coursesObj[0]["SGPAGrade"]);
-                                                                    //$('.cgpa-grade').html(coursesObj[0]["CGPAGrade"]);
-                                                                }
-                                                            }
-                                                            console.log("StudentResult Loaded");
-                                                            $(".loader").hide();
-                                                            $(".page-contect").fadeIn(1000);
-                                                        },
+
+    console.log("StudentResult Loaded");
+    console.log(response);
+
+    $(".loader").hide();
+    $(".page-contect").show();
+
+},
                                                         error: function(request, status, error) {
                                                             ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
                                                         }
