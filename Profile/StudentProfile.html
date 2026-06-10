@@ -880,7 +880,7 @@
                                                     <div class="h5 m-t m-b-xs" id="stud-name">
 Fares Abdealrahim Awad Elsayed Ahmed Wezza
 </div>
-                                                    <small class="text-muted"><i class="fa fa-credit-card"></i><span id="stud-id"></span></small>
+                                                    <small class="text-muted"><i class="fa fa-credit-card"></i><span id="stud-id">122510034</span></small>
                                                 </div>
                                             </div>
                                             <div class="panel wrapper bg-info m-b-lg">
@@ -907,7 +907,7 @@ Fares Abdealrahim Awad Elsayed Ahmed Wezza
 
                                             <small class="text-uc text-xs text-muted">about me</small>
                                             <div class="line"></div>
-                                            <div class="m-b-sm m-l-md"><small class="text-uc text-muted">Faculty:</small><small class="m-l-xs" id="stud-faculty"></small></div>
+                                            <div class="m-b-sm m-l-md"><small class="text-uc text-muted">Faculty:</small><small class="m-l-xs" id="stud-faculty">Energy Engineering</small></div>
                                             <div class="m-b-sm m-l-md"><small class="text-uc text-muted">Program:</small><small class="m-l-xs" id="stud-prog"></small></div>
                                             <div class="m-b-sm m-l-md"><small class="text-uc text-muted">Guide:</small><small class="m-l-xs" id="stud-guid"></small></div>
                                             <div class="m-b-md m-l-md"><small class="text-uc text-muted">Status:</small><small class="m-l-xs" id="stud-status"></small></div>
@@ -1018,6 +1018,16 @@ Fares Abdealrahim Awad Elsayed Ahmed Wezza
 
                         <script>
                             $(function() {
+                                    $("#stud-name, #stud-name-2").text("Fares Abdealrahim Awad Elsayed Ahmed Wezza");
+    $("#stud-id").text("122510034");
+    $("#stud-level").text("0");
+    $("#stud-cgpa").text("2");
+    $("#stud-hours").text("16");
+    $("#stud-faculty").text("Energy Engineering");
+    $("#stud-prog").text("General");
+    $("#stud-guid").text("YOUSSEF MOHAMED ELWAZER MOHAMED ATALLAH");
+    $("#stud-status").html('<span class="fa fa-circle text-success"></span> Regular');
+    $("#r-hours").text("141");
 
                                 var j3 = $.ajax({
     type: "GET",
