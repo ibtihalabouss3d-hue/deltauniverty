@@ -5058,7 +5058,9 @@ Date.now = Date.now || function() {
                     $this.data('easyPieChart').update(100 - $value);
                 }, $data.update);
             }
-            $(this).easyPieChart($data);
+            if ($.fn.easyPieChart) {
+    $(this).easyPieChart($data);
+}
         });
         $(".combodate").each(function() {
             $(this).combodate();
