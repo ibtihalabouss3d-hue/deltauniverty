@@ -1159,7 +1159,7 @@
                                 //        ShowResultPopup("results-error", "Unknown error, Can't preform this operation, Please call technical support.");
                                 //    }
                                 //});
-                                $.when(j2, j3).done(function() {
+                                /*$.when(j2, j3).done(function() {
 
                                     var notCount = $(".Notcount").text() == "0" ? "" : $(".Notcount").text();
                                     $(".notifications .badge", ".page-contect").text(notCount);
@@ -1170,6 +1170,9 @@
                                     $(".loader").hide();
                                     $(".page-contect").show();
                                 });
+                                */
+                                $(".loader").hide();
+$(".page-contect").show();
 
                                 $(document).on('click', '.notify-item', function() {
                                     var $taregt = $(this)
