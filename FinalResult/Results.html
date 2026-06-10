@@ -846,6 +846,7 @@
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
                                     success: function(response) {
+                                        console.log("Questionnaire Loaded", response);
                                         if (response == -1) {
                                             SessionDied();
                                         } else {
@@ -916,6 +917,7 @@
                                                                     //$('.cgpa-grade').html(coursesObj[0]["CGPAGrade"]);
                                                                 }
                                                             }
+                                                            console.log("StudentResult Loaded");
                                                             $(".loader").hide();
                                                             $(".page-contect").fadeIn(1000);
                                                         },
